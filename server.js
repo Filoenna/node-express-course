@@ -1,10 +1,8 @@
 const { request } = require('express');
 const express = require('express');
 const app = express();
-const bodyParser = request('body-parser');
 
-
-app.use(bodyParser.json());
+app.use(express.json());
 
 
 const mockUserData = [
@@ -27,6 +25,10 @@ app.get('/users/:id', function(request, response){
         message: 'Got one user. Period.',
         users: request.params.id
     })
+})
+
+app.get('/', function(request, response){
+    response.send("Hello!");
 })
 
 app.post('/login', function(request, response){
